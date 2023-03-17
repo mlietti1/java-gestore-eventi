@@ -6,9 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class Event {
     private String title;
     private LocalDate date;
-
-    private int capacity;
-
+    private final int capacity;
     private int booked;
 
     public Event(String title, LocalDate date, int capacity) {
@@ -67,8 +65,6 @@ public class Event {
         }
 
         booked++;
-        System.out.println("Your booking for the " + title + " event on " + getFormattedDate() + " was successful.");
-        System.out.println("There are " + getAvailable() + " tickets available." );
     }
 
     public void cancel() throws PastEventException{
@@ -78,9 +74,7 @@ public class Event {
         if (booked == 0){
             throw new NoBookingsException("You can't cancel since there are no bookings for this event");
         }
-
         booked--;
-        System.out.println("You successfully cancelled your booking for " + title + ".");
-        System.out.println("There are " + getAvailable() + " tickets available." );
+
     }
 }
