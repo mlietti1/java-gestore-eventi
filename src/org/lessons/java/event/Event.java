@@ -50,6 +50,14 @@ public class Event {
         return capacity - booked;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+                "title='" + title + '\'' +
+                ", date=" + getFormattedDate() +
+                '}';
+    }
+
     public void book() throws PastEventException, SoldOutException{
         if(LocalDate.now().isAfter(date)){
             throw new PastEventException("This event is no longer available.");
@@ -58,9 +66,21 @@ public class Event {
             throw new SoldOutException("Booking unsuccessful, this event is sold out.");
         }
 
-        capacity++;
+        booked++;
         System.out.println("Your booking for the " + title + " event on " + getFormattedDate() + " was successful.");
         System.out.println("There are " + getAvailable() + " tickets available." );
+    }
 
+    public void cancel() throws PastEventException{
+        if(LocalDate.now().isAfter(date)){
+            throw new PastEventException("This event is no longer available.");
+        }
+        if (booked == 0){
+            throw new NoBookingsException("You can't cancel since there are no bookings for this event");
+        }
+
+        booked--;
+        System.out.println("You successfully cancelled your booking for " + title + ".");
+        System.out.println("There are " + getAvailable() + " tickets available." );
     }
 }
