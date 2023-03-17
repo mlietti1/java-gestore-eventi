@@ -72,7 +72,7 @@ public class Event {
             throw new PastEventException("This event is no longer available.");
         }
         if (booked == 0){
-            throw new NoBookingsException("You can't cancel since there are no bookings for this event");
+            throw new NoBookingsException("Refund unsuccessful, there aren't enough bookings for this event");
         }
         booked--;
 

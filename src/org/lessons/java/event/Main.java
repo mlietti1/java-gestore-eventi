@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to your event manager!");
         System.out.print("Add the event title: ");
@@ -181,6 +182,12 @@ public class Main {
             }
         }
         while (!option.equals("3"));
+
+        /*
+         provo a stampare un concerto
+         Concert concert = new Concert("we", 2023-12-12, 12, "12:20" , 12.23);
+         System.out.println(concert);
+        */
 
     }
 }
